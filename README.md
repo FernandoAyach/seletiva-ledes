@@ -2,7 +2,7 @@
 
 ## Como contribuir para o projeto:
 
-### 0. Clone o projeto na sua máquina
+### 0. Clone o projeto na sua máquina (Faça todas os comandos na pasta do projeto)
 
 ### 1. Baixe o interpretador python na sua máquina, se não tiver
 
@@ -46,7 +46,7 @@ Linux:
 
 ### 5. Instale as dependências do projeto
 
-`pip install -r requirements`
+`pip install -r requirements.txt`
 
 ### 6. Quando terminar de codar, você pode fechar a virtualenv com
 
