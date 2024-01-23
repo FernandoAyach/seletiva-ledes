@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crachá Virtual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
+</head>
+<body>  
+    <div class = "badge-background">
+        <div class = "badge-background-detail">
+            <img 
+                class = "user-image" 
+                src="{% static '/assets/images/badge/george.jpg' %}" 
+                alt="Imagem do usuário"
+            >
+        </div>
+        <h1>João da Silva</h1>
+        <div class = "user-info">
+            <p><b>Identificação:</b> 001115590</p>
+            <p><b>Email:</b> joaosilva@gmail.com</p>
+            <p><b>Data de nascimento:</b> 20/05/2000</p>
+            <p><b>Telefone:</b> 67999002356</p>
+            <p><b>Validade:</b> 19/07/2026</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.badge-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.badge-background-detail {
+    background-color: #373DD3;
+}
+
+.user-image {
+    width: 30vh;
+    height: 30vh;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
