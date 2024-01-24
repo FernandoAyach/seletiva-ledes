@@ -29,8 +29,11 @@
             <p><b>Validade:</b> {{ user.validity_date }}</p>
         </div>
         <div class = "edit-icon-div">
-            <img class = "edit-icon" src="{% static '/assets/icons/edit.png' %}" alt="Editar conta">
+            <a href="{% url 'editUser' user.id %}">
+                <img class = "edit-icon" src="{% static '/assets/icons/edit.png' %}" alt="Editar conta">
+            </a>
         </div>
     </div>
 </body>
+</html>
 </html>

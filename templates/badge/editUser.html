@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crachá Virtual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
+</head>
+<body>  
+    <div class = "badge-background">
+        <div class = "badge-background-detail"></div>
+        <section class="user-info">
+            <form action="{% url 'editUser' user_id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    {% for field in form.visible_fields %}
+                    <div class = "input-edit-div">
+                        <label for = "{{ field.id_for_label }}">
+                            {{ field.label }}
+                        </label>
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class = "edit-user-buttons-div">
+                    <a href="{% url 'badge' %}">
+                        <button type ="submit" class = "update-badge-button">Atualizar Crachá</button>
+                    </a>
+                    <a href="{% url 'badge' %}">
+                        <button type ="submit" class = "cancel-badge-button">Cancelar</button>
+                    </a>
+                </div>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
+</html>
