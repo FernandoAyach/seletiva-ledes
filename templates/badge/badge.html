@@ -20,13 +20,13 @@
                 alt="Imagem do usuário"
             >
         </div>
-        <h1>João da Silva</h1>
+        <h1>{{ user.name }}</h1>
         <div class = "user-info">
-            <p><b>Identificação:</b> 001115590</p>
-            <p><b>Email:</b> joaosilva@gmail.com</p>
-            <p><b>Data de nascimento:</b> 20/05/2000</p>
-            <p><b>Telefone:</b> 67999002356</p>
-            <p><b>Validade:</b> 19/07/2026</p>
+            <p><b>Identificação:</b> {{ user.id }} </p>
+            <p><b>Email:</b> {{ user.email }}</p>
+            <p><b>Data de nascimento:</b> {{ user.birthDate }}</p>
+            <p><b>Telefone:</b> {{ user.phone }}</p>
+            <p><b>Validade:</b> {{ user.validity_date }}</p>
         </div>
         <div class = "edit-icon-div">
             <img class = "edit-icon" src="{% static '/assets/icons/edit.png' %}" alt="Editar conta">
