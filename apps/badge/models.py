@@ -35,9 +35,9 @@ class BadgeUserManager(BaseUserManager):
 class BadgeUser(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length = 30, blank = False)
     email = models.EmailField(unique = True, blank = False)
-    birth_date = models.DateTimeField(blank = False)
+    birth_date = models.DateField(blank = False)
     phone = models.CharField(max_length = 15, blank = False)
-    validity_date = models.DateTimeField(blank = False)
+    validity_date = models.DateField(blank = False)
     is_admin = models.BooleanField(default = False)
     picture = models.ImageField(upload_to = "user/%Y/%m/%d/", blank = True)
 
