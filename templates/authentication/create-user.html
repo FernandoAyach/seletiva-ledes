@@ -1,0 +1,9 @@
+<html>
+    <h1>this is the create user page</h1>
+
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{ register_form.as_p }}
+        <input type="submit" value="create user" />
+    </form>
+</html>
