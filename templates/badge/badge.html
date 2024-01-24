@@ -16,7 +16,7 @@
             <img class = "logout-icon" src="{% static '/assets/icons/logout.png' %}" alt="Sair da conta">
             <img 
                 class = "user-image" 
-                src="{% static '/assets/images/badge/george.jpg' %}" 
+                src="{{ user.picture.url }}"
                 alt="Imagem do usuário"
             >
         </div>
@@ -24,7 +24,7 @@
         <div class = "user-info">
             <p><b>Identificação:</b> {{ user.id }} </p>
             <p><b>Email:</b> {{ user.email }}</p>
-            <p><b>Data de nascimento:</b> {{ user.birthDate }}</p>
+            <p><b>Data de nascimento:</b> {{ user.birth_date }}</p>
             <p><b>Telefone:</b> {{ user.phone }}</p>
             <p><b>Validade:</b> {{ user.validity_date }}</p>
         </div>

@@ -28,6 +28,22 @@ body {
     padding: 5vh;
 }
 
+.edit-icon, .logout-icon {
+    max-width: 5vh;
+    max-height: 5vh;
+    margin-bottom: 2vh;
+}
+
+.edit-icon-div {
+    min-width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.edit-icon {
+   margin: 2vh;
+}
+
 .user-image {
     width: 100%; 
     height: auto; 

@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.badge.models import BadgeUser
+
+admin.site.register(BadgeUser)
+
