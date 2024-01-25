@@ -7,7 +7,7 @@ from . forms import LoginForm
 
 def login(request):
     if request.user.is_authenticated:
-        return redirect('badge')
+        return redirect('badge') if not request.user.is_admin else redirect('admin')
 
     form = LoginForm()
 
