@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import user_edit_requests, approve_user_edit_request
+from .views import user_edit_requests, new_user_edit_request, approve_user_edit_request
 
-app_name = 'admin_app'
+app_name = 'administrator'
 
 urlpatterns = [
-   path('user_edit_requests/', user_edit_requests, name='user_edit_requests'),
-   path('approve_user_edit_request/<int:request_id>/', approve_user_edit_request, name='approve_user_edit_request'),
-   
+   path('list/', user_edit_requests, name='list'),
+   path('new/', new_user_edit_request, name='new'),
+   path('approve/<int:user_edit_request_id>/', approve_user_edit_request, name='approve'),
 ]

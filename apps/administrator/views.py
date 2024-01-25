@@ -3,19 +3,41 @@ from .models import UserEditRequest
 from .forms import UserEditRequestForm
 
 def user_edit_requests(request):
-    requests = UserEditRequest.objects.filter(is_approved=False)
-    return render(request, 'admin_app/user_edit_requests.html', {'requests': requests})
+    alteracoes = UserEditRequest.objects.filter(is_approved=False)
+    return render(request, 'administrator/list.html', {'alteracao': alteracoes})
 
-def approve_user_edit_request(request, request_id):
-    user_edit_request = get_object_or_404(UserEditRequest, id=request_id)
+
+
+def new_user_edit_request(request):
+    form = UserEditRequestForm()
+
     if request.method == 'POST':
-        form = UserEditRequestForm(request.POST, instance=user_edit_request)
-        if form.is_valid():
-            form.save()
-            user_edit_request.approve()
-            # Implemente a lógica para aprovar a solicitação e atualizar as informações do usuário
-            return redirect('admin_app:user_edit_requests')
-    else:
-        form = UserEditRequestForm(instance=user_edit_request)
+        data = {
+            'user': request.user.id,
+            'name': request.POST['name'],
+            'email': request.POST['email'],
+            'birth_date': request.POST['birth_date'],
+            'phone': request.POST['phone'],
+            'is_approved': False,
+        }
 
-    return render(request, 'admin_app/approve_user_edit_request.html', {'form': form})
+        print(request.POST)
+
+        form = UserEditRequestForm(data, request.FILES)
+        if form.is_valid():
+            userEditRequest = form.save(commit=False)
+            userEditRequest.user = request.user
+            userEditRequest.save()
+
+    return render(request, 'administrator/new.html', {'form': form})
+
+
+
+def approve_user_edit_request(request, user_edit_request_id):
+    user_edit_request = get_object_or_404(UserEditRequest, id=user_edit_request_id)
+
+    if request.method == 'POST':
+        user_edit_request.approve()
+        return redirect('list')
+    
+    return redirect('/')

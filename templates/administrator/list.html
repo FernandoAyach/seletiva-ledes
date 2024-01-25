@@ -24,10 +24,17 @@
                 {% for alt in alteracao %}
                     <div class = "alteracao">
                         <div class = "old">
-                            <img 
-                                class = "alteracao-image" 
-                                src="{{ alt.user.picture.url }}"
-                            >
+                            {% if alt.user.picture %}
+                                <img 
+                                    class = "alteracao-image" 
+                                    src="{{ alt.user.picture.url }}"
+                                >
+                            {% else %}
+                                <img
+                                    class = "alteracao-image"
+                                    src="{% static '/assets/images/badge/no_picture.avif' %}"
+                                >
+                            {% endif %}
                             <div class = "old-info">
                                 <p>{{ alt.user.name }}</p>
                                 <p>{{ alt.user.email }}</p>
@@ -37,38 +44,45 @@
                         </div>
 
                         <div class="new">
-                            {% if alt.new_data.picture %}
+                            {% if alt.picture %}
                                 <img
                                     class = "alteracao-image"
-                                    src="{{ alt.new_data.picture.url }}"
+                                    src="{{ alt.picture.url }}"
                                 >
                             {% else %}    
-                                <img 
-                                    class = "alteracao-image" 
-                                    src="{{ alt.user.picture.url }}"
-                                >
+                                {% if alt.user.picture %}
+                                    <img 
+                                        class = "alteracao-image" 
+                                        src="{{ alt.user.picture.url }}"
+                                    >
+                                {% else %}
+                                    <img
+                                        class = "alteracao-image"
+                                        src="{% static '/assets/images/badge/no_picture.avif' %}"
+                                    >
+                                {% endif %}
                             {% endif %}
                             <div class = "new-info"> 
-                                {% if alt.new_data.name %}
-                                    <p>{{ alt.new_data.name }}</p>
+                                {% if alt.name %}
+                                    <p>{{ alt.name }}</p>
                                 {% else %}
                                     <p>{{ alt.user.name }}</p>
                                 {% endif %}
 
-                                {% if alt.new_data.email %}
-                                    <p>{{ alt.new_data.email }}</p>
+                                {% if alt.email %}
+                                    <p>{{ alt.email }}</p>
                                 {% else %}
                                     <p>{{ alt.user.email }}</p>
                                 {% endif %}
 
-                                {% if alt.new_data.birth_date %}
-                                    <p>{{ alt.new_data.birth_date }}</p>
+                                {% if alt.birth_date %}
+                                    <p>{{ alt.birth_date }}</p>
                                 {% else %}
                                     <p>{{ alt.user.birth_date }}</p>
                                 {% endif %}
 
-                                {% if alt.new_data.phone %}
-                                    <p>{{ alt.new_data.phone }}</p>
+                                {% if alt.phone %}
+                                    <p>{{ alt.phone }}</p>
                                 {% else %}
                                     <p>{{ alt.user.phone }}</p>
                                 {% endif %}
@@ -76,8 +90,11 @@
                         </div>
 
                         <div class="botoes-alteracao">
-                            <a class="botao-aprovar" href="">Aprovar</a>
-                            <a class="botao-rejeitar" href="">Rejeitar</a>
+                            <form method="post" action="{% url 'administrator:approve' user.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="botao-aprovar" type="submit">Aprovar</a>
+                            </form>
+                            <!-- <a class="botao-rejeitar" href="">Rejeitar</a> -->
                         </div>
                     </div>
                 {% endfor %}
