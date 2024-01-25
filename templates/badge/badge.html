@@ -13,19 +13,29 @@
 <body>  
     <div class = "badge-background">
         <div class = "badge-background-detail">
-            <img class = "logout-icon" src="{% static '/assets/icons/logout.png' %}" alt="Sair da conta">
+            <a class = "logout-icon" href="{% url 'logout' %}">
+                <img class = "logout-icon" src="{% static '/assets/icons/logout.png' %}" alt="Sair da conta">
+            </a>
+            {% if not user.picture %}
+            <img 
+                class = "user-image" 
+                src="{% static 'assets/images/badge/no_picture.avif'%}"
+                alt="Imagem do usuário"
+            >
+            {% else %}
             <img 
                 class = "user-image" 
                 src="{{ user.picture.url }}"
                 alt="Imagem do usuário"
             >
+            {% endif %}
         </div>
         <h1>{{ user.name }}</h1>
         <div class = "user-info">
             <p><b>Identificação:</b> {{ user.id }} </p>
             <p><b>Email:</b> {{ user.email }}</p>
-            <p><b>Data de nascimento:</b> {{ user.birth_date }}</p>
-            <p><b>Telefone:</b> {{ user.phone }}</p>
+            <p><b>Data de nascimento: </b> {{ user.birth_date }}</p>
+            <p><b>Telefone: </b> {{ user.phone }}</p>
             <p><b>Validade:</b> {{ user.validity_date }}</p>
         </div>
         <div class = "edit-icon-div">
@@ -35,5 +45,4 @@
         </div>
     </div>
 </body>
-</html>
 </html>

@@ -10,6 +10,8 @@ body {
 }
 
 .badge-background {
+    max-width: 50%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,6 +28,9 @@ body {
     background-color: #373DD3;
     margin-bottom: 4vh;
     padding: 5vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 .edit-icon, .logout-icon {
@@ -52,10 +57,99 @@ body {
 }
 
 .user-info {
-    padding: 10vh;
+    padding: 1vh;
 }
 
 .user-info p{
     font-size: 1.3rem;
-    margin-bottom: 2vh;
+    margin: 2vh;
+    padding: 5%;
+    display: flex;
+    margin: 0;
+}
+
+.center-container {
+    width: 70%;
+    max-width: 300px; 
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form-control {
+    width: 90%;
+    padding: 1.5vh;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #FFF;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.062);
+    color: #1f1f1f;
+    font-size: 16px; 
+    margin-bottom: 5%;
+}
+
+.form-group label {
+    display: block;
+    margin-top: 1rem;
+    text-align: left;
+    padding-left: 1%;
+    padding-bottom: 1%;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 500;
+}
+
+.header-text-light {
+    margin-top: 10%;
+    font-size: 2rem; 
+    font-family: Montserrat;
+    word-wrap: break-word;
+}
+
+.header-text-bold {
+    color: #1f1f1f;
+    font-size: 33px;
+    font-family: Montserrat;
+    font-weight: 700;
+    word-wrap: break-word;
+
+}
+
+.login-button {
+    width: 100%;
+    height: 44px; /* Ajuste a altura conforme necessário */
+    background: #373dd3;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; 
+    
+}
+
+.button-text {
+    color: white;
+    font-size: 1.5rem; 
+    font-family: Montserrat;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+@media screen and (max-width: 600px) {
+    .center-container {
+        width: 90%;
+    }
+}
+
+.container { 
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    min-width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #1f1f1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

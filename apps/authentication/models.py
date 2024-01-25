@@ -2,30 +2,37 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 
 class BadgeUserManager(BaseUserManager):
-    def create_user(self, email, name, birth_date, phone, validity_date, picture=None, password=None):
+    def create_user(self, email, name, birth_date, phone, validity_date, password, picture=None):
         if not email:
             raise ValueError('O campo de e-mail deve ser definido')
+        if not password:
+            raise ValueError('O campo de senha deve ser definido')
         user = self.model(
-            email=self.normalize_email(email),
+            email = self.normalize_email(email),
             name=name,
             birth_date=birth_date,
             phone=phone,
-            picture=picture,
             validity_date=validity_date,
+            picture=picture,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, name, birth_date, phone, validity_date, password=None):
-        user = self.create_user(
-            email,
+    def create_superuser(self, email, name, birth_date, phone, validity_date, password, picture=None):
+        if not email:
+            raise ValueError('O campo de e-mail deve ser definido')
+        if not password:
+            raise ValueError('O campo de senha deve ser definido')
+        user = self.model(
+            email=self.normalize_email(email),
             name=name,
             birth_date=birth_date,
             phone=phone,
             validity_date=validity_date,
-            password=password,
+            picture=picture,
         )
+        user.set_password(password)
         user.is_admin = True
         user.save(using=self._db)
         return user
@@ -45,11 +52,13 @@ class BadgeUser(AbstractBaseUser, PermissionsMixin):
     objects = BadgeUserManager()
 
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name', 'birth_date', 'phone', 'validity_date']
+    DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
     @property
     def is_staff(self):
         return self.is_admin
-    
+
     @property
     def is_superuser(self):
         return self.is_admin
