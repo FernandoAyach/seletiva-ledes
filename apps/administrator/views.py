@@ -1,19 +1,21 @@
-from django.shortcuts import render
-from .models import UserProfile
-
-def user_list(request):
-    users = UserProfile.objects.all()
-    return render(request, 'administrator/user_list.html', {'users': users})
-
-# administrator/views.py
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import UserProfile
+from .models import UserEditRequest
+from .forms import UserEditRequestForm
 
-def delete_user(request, user_id):
-    user_to_delete = get_object_or_404(UserProfile, id=user_id)
+def user_edit_requests(request):
+    requests = UserEditRequest.objects.filter(is_approved=False)
+    return render(request, 'admin_app/user_edit_requests.html', {'requests': requests})
 
+def approve_user_edit_request(request, request_id):
+    user_edit_request = get_object_or_404(UserEditRequest, id=request_id)
     if request.method == 'POST':
-        user_to_delete.delete()
-        return redirect('administrator:user_list')  # Redireciona para a lista de usuários após a exclusão
+        form = UserEditRequestForm(request.POST, instance=user_edit_request)
+        if form.is_valid():
+            form.save()
+            user_edit_request.approve()
+            # Implemente a lógica para aprovar a solicitação e atualizar as informações do usuário
+            return redirect('admin_app:user_edit_requests')
+    else:
+        form = UserEditRequestForm(instance=user_edit_request)
 
-    return render(request, 'administrator/delete_user_confirm.html', {'user': user_to_delete})
+    return render(request, 'admin_app/approve_user_edit_request.html', {'form': form})

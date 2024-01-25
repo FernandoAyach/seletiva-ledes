@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>User List</title>
-</head>
-<body>
-    <h1>User List</h1>
-    <ul>
-        {% for user in users %}
-            <li>
-                {{ user.name }} - {{ user.email }} - {{ user.birth_date }} - {{ user.phone }} - {{ user.validity_date }}
-                | <form method="post" action="{% url 'administrator:delete_user' user.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit">Excluir</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+<!-- admin_app/templates/admin_app/user_edit_requests.html -->
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+<h2>User Edit Requests</h2>
+<ul>
+    {% for request in requests %}
+        <li>{{ request.user.name }} - <a href="{% url 'admin_app:approve_user_edit_request' request.id %}">Approve</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
 
