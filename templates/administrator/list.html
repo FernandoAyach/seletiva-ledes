@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="botoes-alteracao">
-                            <form method="post" action="{% url 'administrator:approve' user.id %}" style="display:inline;">
+                            <form method="post" action="{% url 'administrator:approve' alt.id %}" style="display:inline;">
                                 {% csrf_token %}
                                 <button class="botao-aprovar" type="submit">Aprovar</a>
                             </form>

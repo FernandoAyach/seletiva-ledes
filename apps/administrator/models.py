@@ -1,7 +1,6 @@
 from django.db import models
 
-# Create your models here.
-# administrator/models.py
+
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -25,3 +24,4 @@ class UserEditRequest(models.Model):
         self.is_approved = True
 
         self.user.save()
+        self.save()

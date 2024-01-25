@@ -38,6 +38,6 @@ def approve_user_edit_request(request, user_edit_request_id):
 
     if request.method == 'POST':
         user_edit_request.approve()
-        return redirect('list')
+        return redirect('administrator:list')
     
     return redirect('/')
