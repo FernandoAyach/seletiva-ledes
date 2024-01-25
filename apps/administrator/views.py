@@ -9,7 +9,7 @@ def user_edit_requests(request):
 
 
 def new_user_edit_request(request):
-    form = UserEditRequestForm()
+    form = UserEditRequestForm(instance=request.user)
 
     if request.method == 'POST':
         data = {
@@ -21,7 +21,6 @@ def new_user_edit_request(request):
             'is_approved': False,
         }
 
-        print(request.POST)
 
         form = UserEditRequestForm(data, request.FILES)
         if form.is_valid():

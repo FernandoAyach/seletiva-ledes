@@ -93,22 +93,11 @@
                                 {% csrf_token %}
                                 <button class="botao-aprovar" type="submit">Aprovar</button>
                             </form>
-                            <form method="post" action="{% url 'administrator:approve' alt.id %}" style="display:inline;">
+                            <form method="post" action="{% url 'administrator:reject' alt.id %}" style="display:inline;">
                                 {% csrf_token %}
                                 <button class="botao-rejeitar" type="submit">Rejeitar</button>
                             </form>
-<<<<<<< HEAD
-                           
-=======
->>>>>>> e57fa7522edbf0c50661964bcfbf1f5323b89c14
                         </div>
-                        <form method="POST" action="{% url 'administrator:reject' alt.id %}">
-                            {% csrf_token %}
-                            <button type="submit">Reject</button>
-                          </form>
-                           
-                        </div>
-                        
                     </div>
                 {% endfor %}
             {% else %}

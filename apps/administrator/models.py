@@ -25,7 +25,7 @@ class UserEditRequest(models.Model):
         self.is_rejected = False
         
         self.user.save()
-        self.save
+        self.save()
         
     def reject(self):
         self.is_approved = False
