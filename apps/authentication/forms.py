@@ -3,10 +3,12 @@ from django.contrib.auth.models import User
 from django import forms
 from django.forms.widgets import PasswordInput, TextInput
 
+from .models import BadgeUser
+
 class CreateUserForm(UserCreationForm):
     class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        model = BadgeUser
+        fields = ['name', 'email', 'birth_date', 'phone', 'validity_date', 'picture']
 
 
 class LoginForm(AuthenticationForm):
