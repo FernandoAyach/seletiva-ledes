@@ -9,6 +9,7 @@ def badge(request):
 
 @login_required(login_url='login')
 def admin(request):
+    """
     badge_user = request.user
 
     if not badge_user.is_admin:
@@ -37,6 +38,8 @@ def admin(request):
             }
         },
     ]
+    """
+    return render(request, 'badge/admin.html', {'alteracao': {}})
+    
 
-    return render(request, 'badge/admin.html', {'alteracao': alteracao})
 
