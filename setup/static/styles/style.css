@@ -11,6 +11,7 @@ body {
 
 .badge-background {
     max-width: 50%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,6 +30,7 @@ body {
     padding: 5vh;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .edit-icon, .logout-icon {
@@ -63,9 +65,6 @@ body {
     margin: 2vh;
     padding: 5%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
 }
 

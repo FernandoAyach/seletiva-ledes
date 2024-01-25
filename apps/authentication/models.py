@@ -40,8 +40,6 @@ class BadgeUserManager(BaseUserManager):
     def get_by_natural_key(self, email):
         return self.get(email=email)
 
-
-
 class BadgeUser(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length = 30, blank = False)
     email = models.EmailField(unique = True, blank = False)
