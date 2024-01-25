@@ -1,7 +1,7 @@
 from django import forms
 import re
 
-from apps.badge.models import BadgeUser
+from apps.authentication.models import BadgeUser
 
 class BadgeUserForms(forms.ModelForm):
     class Meta: 
@@ -28,11 +28,11 @@ class BadgeUserForms(forms.ModelForm):
             )
         }
 
-        def clean_phone(self):
-            phone = self.cleaned_data.get('phone')
-            phone_pattern = re.compile(r'^\+?1?\d{9,15}$')
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone')
+        phone_pattern = re.compile(r'^\(\d{2}\) \d{5}-\d{4}$')
 
-            if not phone_pattern.match(phone):
-                raise forms.ValidationError("Telefone inválido")
+        if not phone_pattern.match(phone):
+            raise forms.ValidationError("Telefone inválido")
 
-            return phone
+        return phone

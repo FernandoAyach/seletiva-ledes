@@ -16,6 +16,11 @@
             <a class = "logout-icon" href="{% url 'logout' %}">
                 <img class = "logout-icon" src="{% static '/assets/icons/logout.png' %}" alt="Sair da conta">
             </a>
+            {% for message in messages %}
+                <div id="alert-message" class="alert alert-warning">
+                    {{ message }}
+                </div>
+            {% endfor %}
             {% if not user.picture %}
             <img 
                 class = "user-image" 
@@ -46,3 +51,13 @@
     </div>
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('#alert-message').fadeOut('slow');
+        }, 3000);
+    });
+</script>
+
