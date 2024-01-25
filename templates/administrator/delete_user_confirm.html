@@ -1,0 +1,15 @@
+<!-- administrator/templates/administrator/delete_user_confirm.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Exclusão</title>
+</head>
+<body>
+    <h2>Tem certeza que deseja excluir {{ user.name }}?</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        <button type="submit">Sim, excluir</button>
+    </form>
+    <a href="{% url 'user_list' %}">Cancelar</a>
+</body>
+</html>

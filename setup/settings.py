@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.badge.apps.BadgeConfig',
     'apps.authentication.apps.AuthenticationConfig',
+    'apps.administrator.apps.AdministratorConfig',
 ]
 
 MIDDLEWARE = [
