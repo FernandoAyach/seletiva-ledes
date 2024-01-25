@@ -6,7 +6,6 @@ from django.http import HttpResponse
 
 from . forms import CreateUserForm, LoginForm
 
-
 def login(request):
     if request.user.is_authenticated:
         return redirect('/')
@@ -24,7 +23,7 @@ def login(request):
             
             if user is not None:
                 auth.login(request, user)
-                return redirect('dashboard')
+                return redirect('badge')
 
     return render(request, 'authentication/login.html', context={'login_form': form})
 

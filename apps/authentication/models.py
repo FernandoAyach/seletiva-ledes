@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
-# Create your models here.
 
 class BadgeUserManager(BaseUserManager):
     def create_user(self, email, name, birth_date, phone, validity_date, password, picture=None):
@@ -56,6 +55,7 @@ class BadgeUser(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name', 'birth_date', 'phone', 'validity_date']
+    DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
     @property
     def is_staff(self):

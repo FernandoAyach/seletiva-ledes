@@ -10,7 +10,6 @@ class CreateUserForm(UserCreationForm):
         model = BadgeUser
         fields = ['name', 'email', 'birth_date', 'phone', 'validity_date', 'picture']
 
-
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=TextInput(attrs={'class': "form-control"}))
     password = forms.CharField(widget=PasswordInput(attrs={'class': "form-control"}))
