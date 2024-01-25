@@ -1,6 +1,8 @@
 from pathlib import Path, os
 from dotenv import load_dotenv
 
+from django.contrib.messages import constants as messages
+
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -108,3 +110,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+    messages.SUCCESS: "success"
+}

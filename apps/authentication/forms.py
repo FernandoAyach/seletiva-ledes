@@ -1,15 +1,38 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 from django.forms.widgets import PasswordInput, TextInput
-
-from .models import BadgeUser
-
-class CreateUserForm(UserCreationForm):
-    class Meta:
-        model = BadgeUser
-        fields = ['name', 'email', 'birth_date', 'phone', 'validity_date', 'picture']
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+from apps.authentication.models import BadgeUser
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(widget=TextInput(attrs={'class': "form-control"}))
-    password = forms.CharField(widget=PasswordInput(attrs={'class': "form-control"}))
+    username = forms.CharField(
+        widget = TextInput(
+            attrs={
+                'class': "input-form",
+                "placeholder": "joaosilva@gmail.com"
+            }
+        )
+    )
+    password = forms.CharField(
+        label = "Senha",
+        widget = PasswordInput(
+            attrs={
+                'class': "input-form",
+                "placeholder": "********"
+            }
+        )
+    )
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+
+        try:
+            validate_email(username)
+        except ValidationError:
+            raise forms.ValidationError('Por favor, insira um endereço de e-mail válido.')
+        
+        self.errors.pop('username', None)
+
+        return username
+        

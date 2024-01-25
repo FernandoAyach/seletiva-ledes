@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
+from django.contrib import auth, messages
 
 from . forms import LoginForm
 
@@ -22,6 +23,8 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 return redirect('badge')
+            
+        messages.error(request, "Erro ao autenticar, verifique a senha ou o email!")
 
     return render(request, 'authentication/login.html', context={'login_form': form})
 

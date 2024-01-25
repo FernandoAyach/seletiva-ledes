@@ -13,7 +13,7 @@
 <body>  
     <div class = "badge-background">
         <div class = "badge-background-detail">
-            <a href="{% url 'logout' %}">
+            <a class = "logout-icon" href="{% url 'logout' %}">
                 <img class = "logout-icon" src="{% static '/assets/icons/logout.png' %}" alt="Sair da conta">
             </a>
             <img 
@@ -27,7 +27,7 @@
             <p><b>Identificação:</b> {{ user.id }} </p>
             <p><b>Email:</b> {{ user.email }}</p>
             <p><b>Data de nascimento: </b> {{ user.birth_date }}</p>
-            <p><b>Telefone:</b> {{ user.phone }}</p>
+            <p><b>Telefone: </b> {{ user.phone }}</p>
             <p><b>Validade:</b> {{ user.validity_date }}</p>
         </div>
         <div class = "edit-icon-div">
