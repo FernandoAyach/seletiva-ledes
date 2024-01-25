@@ -261,8 +261,12 @@ hr {
     height: 7vh;
 }
 
-.botao-aprovar {
+.botoes-alteracao form {
     width: 40%;
+}
+
+.botao-aprovar {
+    width: 100%;
     min-height: 100%;
     max-height: 100%;
     background: #3c3;
@@ -278,7 +282,7 @@ hr {
 }
 
 .botao-rejeitar {
-    width: 40%;
+    width: 100%;
     min-height: 100%;
     max-height: 100%;
     background: #c33;

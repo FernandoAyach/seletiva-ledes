@@ -92,9 +92,12 @@
                         <div class="botoes-alteracao">
                             <form method="post" action="{% url 'administrator:approve' alt.id %}" style="display:inline;">
                                 {% csrf_token %}
-                                <button class="botao-aprovar" type="submit">Aprovar</a>
+                                <button class="botao-aprovar" type="submit">Aprovar</button>
                             </form>
-                            <!-- <a class="botao-rejeitar" href="">Rejeitar</a> -->
+                            <form method="post" action="{% url 'administrator:approve' alt.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="botao-rejeitar" type="submit">Rejeitar</button>
+                            </form>
                         </div>
                     </div>
                 {% endfor %}
