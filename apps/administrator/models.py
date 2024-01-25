@@ -13,7 +13,7 @@ class UserEditRequest(models.Model):
     phone = models.CharField(max_length=15, blank=True)
     picture = models.ImageField(upload_to="users/", blank=True)
     is_approved = models.BooleanField(default=False)
-
+    is_rejected = models.BooleanField(default=False)
     def approve(self):
         if self.name: self.user.name = self.name
         if self.email: self.user.email = self.email
@@ -22,6 +22,13 @@ class UserEditRequest(models.Model):
         if self.picture: self.user.picture = self.picture
 
         self.is_approved = True
-
+        self.is_rejected = False
+        
         self.user.save()
+        self.save
+        
+    def reject(self):
+        self.is_approved = False
+        self.is_rejected = True
+        
         self.save()

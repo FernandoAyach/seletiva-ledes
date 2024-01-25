@@ -3,7 +3,7 @@ from .models import UserEditRequest
 from .forms import UserEditRequestForm
 
 def user_edit_requests(request):
-    alteracoes = UserEditRequest.objects.filter(is_approved=False)
+    alteracoes = UserEditRequest.objects.filter(is_approved=False,is_rejected=False)
     return render(request, 'administrator/list.html', {'alteracao': alteracoes})
 
 
@@ -41,3 +41,15 @@ def approve_user_edit_request(request, user_edit_request_id):
         return redirect('administrator:list')
     
     return redirect('/')
+
+
+def reject_user_edit_request(request, user_edit_request_id):
+    user_edit_request = get_object_or_404(UserEditRequest, id=user_edit_request_id)
+
+    if request.method == 'POST':
+        user_edit_request.reject()
+        print( 'Solicitação de edição rejeitada com sucesso.')
+        return redirect('administrator:list')
+    
+    return redirect('/')
+

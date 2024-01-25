@@ -88,14 +88,20 @@
                                 {% endif %}
                             </div>
                         </div>
-
                         <div class="botoes-alteracao">
                             <form method="post" action="{% url 'administrator:approve' alt.id %}" style="display:inline;">
                                 {% csrf_token %}
                                 <button class="botao-aprovar" type="submit">Aprovar</a>
                             </form>
-                            <!-- <a class="botao-rejeitar" href="">Rejeitar</a> -->
+                           
                         </div>
+                        <form method="POST" action="{% url 'administrator:reject' alt.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Reject</button>
+                          </form>
+                           
+                        </div>
+                        
                     </div>
                 {% endfor %}
             {% else %}

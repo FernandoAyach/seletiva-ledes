@@ -278,16 +278,16 @@ hr {
 }
 
 .botao-rejeitar {
+   
     width: 40%;
-    min-height: 100%;
-    max-height: 100%;
     background: #c33;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     border: none;
     cursor: pointer;
     display: flex;
-    justify-content: center;
+    padding-right: 20%;
+    justify-content: right;
     align-items: center;
     color: #fff;
     text-decoration: none;
