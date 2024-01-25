@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 
 class BadgeUserManager(BaseUserManager):
-    def create_user(self, email, name, birth_date, phone, validity_date, password=None):
+    def create_user(self, email, name, birth_date, phone, validity_date, picture=None, password=None):
         if not email:
             raise ValueError('O campo de e-mail deve ser definido')
         user = self.model(
@@ -10,6 +10,7 @@ class BadgeUserManager(BaseUserManager):
             name=name,
             birth_date=birth_date,
             phone=phone,
+            picture=picture,
             validity_date=validity_date,
         )
         user.set_password(password)
