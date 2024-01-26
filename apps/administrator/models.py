@@ -14,6 +14,7 @@ class UserEditRequest(models.Model):
     picture = models.ImageField(upload_to="users/", blank=True)
     is_approved = models.BooleanField(default=False)
     is_rejected = models.BooleanField(default=False)
+    
     def approve(self):
         if self.name: self.user.name = self.name
         if self.email: self.user.email = self.email

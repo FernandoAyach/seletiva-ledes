@@ -22,6 +22,8 @@ def login(request):
            
             if user is not None:
                 auth.login(request, user)
+                if user.is_admin:
+                    return redirect('administrator:list')
                 return redirect('badge')
             
         messages.error(request, "Erro ao autenticar, verifique a senha ou o email!")

@@ -217,8 +217,6 @@ b {
 }
 
 .admin-background {
-    max-width: 40%;
-    min-width: 40%;
     height: auto;
     display: flex;
     align-items: center;
@@ -230,8 +228,7 @@ b {
 }
 
 .admin-background-header {
-    max-width: 100%;
-    min-width: 100%;
+    width: 100%;
     max-height: 40%;
     border-radius: 10px 10px 0px 0px;
     background-color: #373DD3;
@@ -245,7 +242,12 @@ b {
 }
 
 .admin-background-header h1 {
+    font-size: xx-large;
     margin-left: 15%;
+}
+
+.admin-list-title {
+    font-size: x-large;
 }
 
 .no-updates {
@@ -253,75 +255,18 @@ b {
     margin: 25%;
 }
 
-.alteracao {
-    min-width: 90%;
-    max-width: 90%;
+.user-request {
+    box-sizing: border-box;
+    width: 90%;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content:center; 
+    justify-content: center; 
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin: 1vh;
+    margin-bottom: 1vh;
     padding: 2vh;
-}
-
-.old-info {
-    color: #999;
-    margin: 0.5vh;
-    width: 50%;
-}
-
-.new-info {
-    color: #3c3;
-    margin: 0.5vh;
-    width: 50%;
-}
-
-hr {
-    min-width: 70vh;
-}
-
-.botoes-alteracao {
-    display: flex;
-    justify-content: space-between;
-    margin: 2vh;
-    height: 7vh;
-}
-
-.botoes-alteracao form {
-    width: 40%;
-}
-
-.botao-aprovar {
-    width: 100%;
-    min-height: 100%;
-    max-height: 100%;
-    background: #3c3;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-}
-
-.botao-rejeitar {
-    width: 100%;
-    min-height: 100%;
-    max-height: 100%;
-    background: #c33;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
+    font-size: large;
 }
 
 .new, .old {
@@ -329,25 +274,40 @@ hr {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 1.5vh;
 }
 
-.alteracao-image {
+.old-info, .new-info {
+    width: 50%;
+}
+
+.old-info {
+    color: #999;
+}
+
+.new-info {
+    color: #3c3;
+}
+
+.request-button-div form {
+    flex: 1;
+}
+
+.request-image {
     width: 25%;
     height: 25%;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 100%;
+    border-radius: 10px;
+    margin: 2vh;
 }
 
-.edit-user-buttons-div {
+.request-button-div {
     display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 100%;
+    justify-content: space-around;
+    margin-top: 2vh;
     flex-wrap: wrap;
 }
 
-.update-badge-button, .cancel-badge-button {
+.update-badge-button, .cancel-badge-button, .approve-edit-button, .reject-edit-button {
     flex: 1;
     display: flex;
     align-items: center;
@@ -365,6 +325,26 @@ hr {
     cursor: pointer;
 }
 
+.approve-edit-button, .reject-edit-button {
+    width: 90%;
+    margin: 1vh;
+}
+
+.approve-edit-button {
+    background: #3c3;
+}
+
+.reject-edit-button {
+    background: #c33;
+}
+
+.edit-user-buttons-div {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
 .cancel-badge-button {
     background: #1F1F1F;
     opacity: 0.7;
@@ -380,4 +360,15 @@ hr {
     color: #1F1F1F;
     margin-bottom: 1vh;
     font-weight: 700;
+}
+
+@media only screen and (max-width: 700px) {
+    .new, .old {
+        flex-direction: column;
+    }
+
+    .request-image {
+        width: 50%;
+        height: 50%;
+    }
 }

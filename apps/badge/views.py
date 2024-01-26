@@ -21,8 +21,6 @@ def editUser(request):
             userEditRequest.save()
             messages.info(request, "Sua atualização de conta foi mandada para aprovação!")
             return redirect("badge")
-        print("erro: ", form.errors)
-
     else:
         form = UserEditRequestForm(instance=request.user)
 

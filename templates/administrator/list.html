@@ -19,19 +19,19 @@
                 </a>
                 <h1>Administrador</h1>
             </div>
-            <h1>Requisições de alteração</h1>
+            <h1 class = "admin-list-title">Requisições de alteração</h1>
             {% if alteracao %}
                 {% for alt in alteracao %}
-                    <div class = "alteracao">
+                    <div class = "user-request">
                         <div class = "old">
                             {% if alt.user.picture %}
                                 <img 
-                                    class = "alteracao-image" 
+                                    class = "request-image" 
                                     src="{{ alt.user.picture.url }}"
                                 >
                             {% else %}
                                 <img
-                                    class = "alteracao-image"
+                                    class = "request-image"
                                     src="{% static '/assets/images/badge/no_picture.avif' %}"
                                 >
                             {% endif %}
@@ -46,18 +46,18 @@
                         <div class="new">
                             {% if alt.picture %}
                                 <img
-                                    class = "alteracao-image"
+                                    class = "request-image"
                                     src="{{ alt.picture.url }}"
                                 >
                             {% else %}    
                                 {% if alt.user.picture %}
                                     <img 
-                                        class = "alteracao-image" 
+                                        class = "request-image" 
                                         src="{{ alt.user.picture.url }}"
                                     >
                                 {% else %}
                                     <img
-                                        class = "alteracao-image"
+                                        class = "request-image"
                                         src="{% static '/assets/images/badge/no_picture.avif' %}"
                                     >
                                 {% endif %}
@@ -88,14 +88,14 @@
                                 {% endif %}
                             </div>
                         </div>
-                        <div class="botoes-alteracao">
+                        <div class="request-button-div ">
                             <form method="post" action="{% url 'administrator:approve' alt.id %}" style="display:inline;">
                                 {% csrf_token %}
-                                <button class="botao-aprovar" type="submit">Aprovar</button>
+                                <button class="approve-edit-button" type="submit">Aprovar</button>
                             </form>
                             <form method="post" action="{% url 'administrator:reject' alt.id %}" style="display:inline;">
                                 {% csrf_token %}
-                                <button class="botao-rejeitar" type="submit">Rejeitar</button>
+                                <button class="reject-edit-button" type="submit">Rejeitar</button>
                             </form>
                         </div>
                     </div>
