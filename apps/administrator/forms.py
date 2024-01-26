@@ -1,5 +1,6 @@
 from django import forms
 from .models import UserEditRequest
+import re
 
 class UserEditRequestForm(forms.ModelForm):
     user = forms.IntegerField(required=False, widget=forms.HiddenInput())
@@ -27,3 +28,12 @@ class UserEditRequestForm(forms.ModelForm):
                 format = "%Y-%m-%d",
             )
         }
+    
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone')
+        phone_pattern = re.compile(r'^\(\d{2}\) \d{5}-\d{4}$')
+
+        if not phone_pattern.match(phone):
+            raise forms.ValidationError("Telefone inválido")
+
+        return phone

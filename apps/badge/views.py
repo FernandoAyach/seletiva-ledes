@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-from apps.authentication.models import BadgeUser
-from apps.badge.forms import BadgeUserForms
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from apps.administrator.forms import UserEditRequestForm

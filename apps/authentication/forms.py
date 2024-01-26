@@ -3,7 +3,6 @@ from django import forms
 from django.forms.widgets import PasswordInput, TextInput
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
-from apps.authentication.models import BadgeUser
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(

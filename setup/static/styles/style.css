@@ -217,6 +217,7 @@ b {
 }
 
 .admin-background {
+    min-width: 70%;
     height: auto;
     display: flex;
     align-items: center;
@@ -243,7 +244,7 @@ b {
 
 .admin-background-header h1 {
     font-size: xx-large;
-    margin-left: 15%;
+    margin-left: 10%;
 }
 
 .admin-list-title {
