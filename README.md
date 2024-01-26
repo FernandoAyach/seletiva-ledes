@@ -1,5 +1,5 @@
 ﻿# Crachá Virtual - Seletiva LEDES (Equipe 6)
-Como parte do processo seletivo para participação do Laboratório de Engenharia e Desenvolvimento de Software (LEDES), foi-se proposto um projeto que deveria ser desenvolvido durante entre 22 de janeiro e 26 de janeiro, em grupos com 6 integrantes, formados pela equipe do próprio laboratório e composta por outros estudantes visando em fazer parte do LEDES.
+Como parte do processo seletivo para participação do Laboratório de Engenharia e Desenvolvimento de Software (LEDES), foi-se proposto um projeto que deveria ser desenvolvido entre 22 de janeiro e 26 de janeiro, em grupos com 6 integrantes, formados pela equipe do próprio laboratório e composta por outros estudantes visando em fazer parte do LEDES.
 
 O desafio proposto foi o desenvolvimento de um crachá virtual com as seguintes características:
 1. O crachá poderá ser acessado em navegadores em dispositivos móveis, desktop e outros similares;
