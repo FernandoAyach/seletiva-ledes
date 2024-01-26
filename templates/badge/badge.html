@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crachá Virtual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
+</head>
+<body>  
+    <div class = "badge-background">
+        <div class = "badge-background-detail">
+            <a class = "logout-icon" href="{% url 'logout' %}">
+                <img class = "logout-icon" src="{% static '/assets/icons/logout.png' %}" alt="Sair da conta">
+            </a>
+            {% for message in messages %}
+                <div id="alert-message" class="alert alert-warning">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% if not user.picture %}
+            <img 
+                class = "user-image" 
+                src="{% static 'assets/images/badge/no_picture.avif' %}"
+                alt="Imagem do usuário"
+            >
+            {% else %}
+            <img 
+                class = "user-image" 
+                src="{{ user.picture.url }}"
+                alt="Imagem do usuário"
+            >
+            {% endif %}
+        </div>
+        <h1>{{ user.name }}</h1>
+        <div class = "user-info">
+            <p><b>Identificação:</b> {{ user.id }} </p>
+            <p><b>Email:</b> {{ user.email }}</p>
+            <p><b>Data de nascimento: </b> {{ user.birth_date }}</p>
+            <p><b>Telefone: </b> {{ user.phone }}</p>
+            <p><b>Validade:</b> {{ user.validity_date }}</p>
+        </div>
+        <div class = "edit-icon-div">
+            <a href="{% url 'editUser' %}">
+                <img class = "edit-icon" src="{% static '/assets/icons/edit.png' %}" alt="Editar conta">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('#alert-message').fadeOut('slow');
+        }, 3000);
+    });
+</script>

@@ -1,6 +1,8 @@
 from pathlib import Path, os
 from dotenv import load_dotenv
 
+from django.contrib.messages import constants as messages
+
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,6 +20,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.badge.apps.BadgeConfig',
+    'apps.authentication.apps.AuthenticationConfig',
+    'apps.administrator.apps.AdministratorConfig',
 ]
 
 MIDDLEWARE = [
@@ -35,7 +40,7 @@ ROOT_URLCONF = 'setup.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -57,6 +62,8 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'badge.BadgeUser'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -72,7 +79,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
@@ -80,6 +87,23 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [ 
+    os.path.join(BASE_DIR, 'setup/static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+AUTH_USER_MODEL = 'authentication.BadgeUser'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+    messages.SUCCESS: "success"
+}

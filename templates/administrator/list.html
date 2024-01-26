@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
+</head>
+<body>  
+    <div class = "container">
+        <div class = "admin-background">
+            <div class = "admin-background-header">
+                <a href="{% url 'logout' %}">
+                    <img class = "logout-icon" src="{% static '/assets/icons/logout.png' %}" alt="Sair da conta">
+                </a>
+                <h1>Administrador</h1>
+            </div>
+            <h1 class = "admin-list-title">Requisições de alteração</h1>
+            {% if alteracao %}
+                {% for alt in alteracao %}
+                    <div class = "user-request">
+                        <div class = "old">
+                            {% if alt.user.picture %}
+                                <img 
+                                    class = "request-image" 
+                                    src="{{ alt.user.picture.url }}"
+                                >
+                            {% else %}
+                                <img
+                                    class = "request-image"
+                                    src="{% static '/assets/images/badge/no_picture.avif' %}"
+                                >
+                            {% endif %}
+                            <div class = "old-info">
+                                <p>{{ alt.user.name }}</p>
+                                <p>{{ alt.user.email }}</p>
+                                <p>{{ alt.user.birth_date }}</p>
+                                <p>{{ alt.user.phone }}</p>
+                            </div>
+                        </div>
+
+                        <div class="new">
+                            {% if alt.picture %}
+                                <img
+                                    class = "request-image"
+                                    src="{{ alt.picture.url }}"
+                                >
+                            {% else %}    
+                                {% if alt.user.picture %}
+                                    <img 
+                                        class = "request-image" 
+                                        src="{{ alt.user.picture.url }}"
+                                    >
+                                {% else %}
+                                    <img
+                                        class = "request-image"
+                                        src="{% static '/assets/images/badge/no_picture.avif' %}"
+                                    >
+                                {% endif %}
+                            {% endif %}
+                            <div class = "new-info"> 
+                                {% if alt.name %}
+                                    <p>{{ alt.name }}</p>
+                                {% else %}
+                                    <p>{{ alt.user.name }}</p>
+                                {% endif %}
+
+                                {% if alt.email %}
+                                    <p>{{ alt.email }}</p>
+                                {% else %}
+                                    <p>{{ alt.user.email }}</p>
+                                {% endif %}
+
+                                {% if alt.birth_date %}
+                                    <p>{{ alt.birth_date }}</p>
+                                {% else %}
+                                    <p>{{ alt.user.birth_date }}</p>
+                                {% endif %}
+
+                                {% if alt.phone %}
+                                    <p>{{ alt.phone }}</p>
+                                {% else %}
+                                    <p>{{ alt.user.phone }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="request-button-div ">
+                            <form method="post" action="{% url 'administrator:approve' alt.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="approve-edit-button" type="submit">Aprovar</button>
+                            </form>
+                            <form method="post" action="{% url 'administrator:reject' alt.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button class="reject-edit-button" type="submit">Rejeitar</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-updates">Nenhuma alteração para revisão.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

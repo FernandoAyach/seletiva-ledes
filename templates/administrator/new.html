@@ -1,0 +1,14 @@
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.name.label }}
+    {{ form.name }}
+    {{ form.email.label }}
+    {{ form.email }}
+    {{ form.birth_date.label }}
+    {{ form.birth_date }}
+    {{ form.phone.label }}
+    {{ form.phone }}
+    {{ form.picture.label }}
+    {{ form.picture }}
+    <input type="submit" value="enviar">
+</form>
