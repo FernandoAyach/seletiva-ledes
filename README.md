@@ -14,6 +14,7 @@ Com o principal intuito de registrar o decorrer do desenvolvimento e como forma 
 - [Figma](https://www.figma.com/file/Hyn2tKWl1JuWCZFbvYM85K/Design-Seletiva-LEDES?type=design&mode=design)
 - [Trello](https://trello.com/b/arx6hunl/seletiva-ledes)
 - [Documento de requisitos](https://docs.google.com/document/d/1-h-CMDqq4-RB2DNmR4LUarToD2kkioz9OwV0J1W-0kg/edit?usp=sharing)
+- [Diário de bordo](https://docs.google.com/document/d/1WOYaRHx70UExSh3XBaVFfx74dkg7iEWIlHOCAHFB1YM/edit?usp=sharing)
 
 
 ## Tecnologias e Ferramentas
