@@ -63,7 +63,7 @@ Para a criação de mais usuários, acesse o caminho `admin/` e acesse a conta d
 
 
 ## Colaboradores
-- Alex Yasohati Hoshino;
-- [Fernando Ribeiro Ayach;](https://github.com/FernandoAyach)
-- [Marcelo Soares Antunes;](https://github.com/Mar-1)
-- [Shynji Robbie Miyasato.](https://github.com/mshynji)
+- [Alex Yasohati Hoshino](https://github.com/hoshino88) - Frontend;
+- [Fernando Ribeiro Ayach](https://github.com/FernandoAyach) - Frontend, Designer e Requisitos;
+- [Marcelo Soares Antunes](https://github.com/Mar-1) - Backend e Frontend;
+- [Shynji Robbie Miyasato](https://github.com/mshynji) - Backend.
