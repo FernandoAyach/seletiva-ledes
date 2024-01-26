@@ -19,7 +19,7 @@
             {% if not user.picture %}
             <img 
                 class = "user-image" 
-                src="{% static 'assets/images/badge/no_picture.avif'%}"
+                src="{% static 'assets/images/badge/no_picture.avif' %}"
                 alt="Imagem do usuário"
             >
             {% else %}
@@ -39,7 +39,9 @@
             <p><b>Validade:</b> {{ user.validity_date }}</p>
         </div>
         <div class = "edit-icon-div">
-            <img class = "edit-icon" src="{% static '/assets/icons/edit.png' %}" alt="Editar conta">
+            <a href="{% url 'editUser' %}">
+                <img class = "edit-icon" src="{% static '/assets/icons/edit.png' %}" alt="Editar conta">
+            </a>
         </div>
     </div>
 </body>

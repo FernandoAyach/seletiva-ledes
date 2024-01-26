@@ -1,7 +1,7 @@
 from django.urls import path
-from apps.badge.views import badge, admin
+from apps.badge.views import badge, editUser
 
 urlpatterns = [
     path('', badge, name = 'badge'),
-    path('admin/', admin, name = 'admin'),
+    path('editUser/', editUser, name = 'editUser'),
 ]

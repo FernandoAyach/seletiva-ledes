@@ -9,6 +9,10 @@ body {
     justify-content: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 b {
     margin-right: 1vh;
 }
@@ -26,7 +30,8 @@ b {
 }
 
 .badge-background-detail {
-    max-width: 100%;
+    box-sizing: border-box;
+    width: 100%;
     max-height: 40%;
     border-radius: 10px 10px 0px 0px;
     background-color: #373DD3;
@@ -41,6 +46,13 @@ b {
     max-width: 5vh;
     max-height: 5vh;
     margin-bottom: 2vh;
+}
+
+.up-right {
+    position: absolute;
+    display: end;
+    top: 0;
+    right: 0;
 }
 
 .edit-icon-div {
@@ -61,6 +73,7 @@ b {
 }
 
 .user-info {
+    max-width: 90%;
     padding: 1vh;
 }
 
@@ -174,6 +187,20 @@ b {
     --bs-alert-color: #842029;
     --bs-alert-bg: #f8d7da;
     --bs-alert-border-color: #f5c2c7;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.alert-warning hr {
+    border-top-color: #ffe8a1;
+}
+
+.alert-warning a {
+    color: #c69500;
 }
 
 .container { 
@@ -310,4 +337,47 @@ hr {
     height: 25%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 100%;
+}
+
+.edit-user-buttons-div {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+.update-badge-button, .cancel-badge-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    background: #373DD3;
+    border: 0;
+    height: auto;
+    color: #FFFF;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    margin: 1vh;
+    font-family: Montserrat;
+    font-size: large;
+    cursor: pointer;
+}
+
+.cancel-badge-button {
+    background: #1F1F1F;
+    opacity: 0.7;
+} 
+
+.input-edit-div {
+    display: flex;
+    flex-direction: column;
+    margin: 2vh;
+}
+
+.input-edit-div label {
+    color: #1F1F1F;
+    margin-bottom: 1vh;
+    font-weight: 700;
 }

@@ -1,45 +1,29 @@
 from django.shortcuts import render, redirect
 from apps.authentication.models import BadgeUser
+from apps.badge.forms import BadgeUserForms
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from apps.administrator.forms import UserEditRequestForm
 
 @login_required(login_url='login')
 def badge(request):
     badge_user = request.user
-    return render(request, 'badge/badge.html', { "user": badge_user} )
+    return render(request, 'badge/badge.html', { "user": badge_user})
 
 @login_required(login_url='login')
-def admin(request):
-    """
-    badge_user = request.user
+def editUser(request):
+    if request.method == "POST":
+        form = UserEditRequestForm(request.POST, request.FILES) 
+            
+        if form.is_valid():
+            userEditRequest = form.save(commit=False)
+            userEditRequest.user = request.user
+            userEditRequest.save()
+            messages.info(request, "Sua atualização de conta foi mandada para aprovação!")
+            return redirect("badge")
+        print("erro: ", form.errors)
 
-    if not badge_user.is_admin:
-        return redirect('badge')
+    else:
+        form = UserEditRequestForm(instance=request.user)
 
-    user2 = BadgeUser.objects.get(id=7)
-    alteracao = [
-        {
-            'user': user2, 
-            'new_data': {
-                'name': 'gasparzinho', 
-                'email': 'gaspart@zin.com', 
-                'birth_date': '06 de Setembro de 2019', 
-                'phone': '(67) 4002-8922',
-                'picture': badge_user.picture,
-            }
-        },
-        {
-            'user': badge_user, 
-            'new_data': {
-                'name': '',
-                'email': '',
-                'birth_date': '',
-                'phone': '',
-                'picture': '',
-            }
-        },
-    ]
-    """
-    return render(request, 'badge/admin.html', {'alteracao': {}})
-    
-
-
+    return render(request, 'badge/editUser.html', {"form": form})
