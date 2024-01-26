@@ -1,16 +1,14 @@
 from django.db import models
-
-
 from django.db import models
 from django.contrib.auth import get_user_model
 
 class UserEditRequest(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
-    name = models.CharField(max_length=30, blank=True)
-    email = models.EmailField(blank=True)
-    birth_date = models.DateField(default='2001-01-01')
-    phone = models.CharField(max_length=15, blank=True)
+    name = models.CharField(max_length=30, blank=False)
+    email = models.EmailField(blank=False)
+    birth_date = models.DateField(blank=False)
+    phone = models.CharField(max_length=15, blank=False)
     picture = models.ImageField(upload_to="users/", blank=True)
     is_approved = models.BooleanField(default=False)
     is_rejected = models.BooleanField(default=False)

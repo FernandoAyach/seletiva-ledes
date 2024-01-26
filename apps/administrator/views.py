@@ -1,34 +1,21 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import UserEditRequest
 from .forms import UserEditRequestForm
 
+@login_required(login_url='login')
 def user_edit_requests(request):
+    if not request.user.is_admin:
+        return redirect("/")
+    
     alteracoes = UserEditRequest.objects.filter(is_approved=False,is_rejected=False)
     return render(request, 'administrator/list.html', {'alteracao': alteracoes})
 
-def new_user_edit_request(request):
-    form = UserEditRequestForm(instance=request.user)
-
-    if request.method == 'POST':
-        data = {
-            'user': request.user.id,
-            'name': request.POST['name'],
-            'email': request.POST['email'],
-            'birth_date': request.POST['birth_date'],
-            'phone': request.POST['phone'],
-            'is_approved': False,
-        }
-
-
-        form = UserEditRequestForm(data, request.FILES)
-        if form.is_valid():
-            userEditRequest = form.save(commit=False)
-            userEditRequest.user = request.user
-            userEditRequest.save()
-
-    return render(request, 'administrator/new.html', {'form': form})
-
+@login_required(login_url='login')
 def approve_user_edit_request(request, user_edit_request_id):
+    if not request.user.is_admin:
+        return redirect("/")
+    
     user_edit_request = get_object_or_404(UserEditRequest, id=user_edit_request_id)
 
     if request.method == 'POST':
@@ -37,7 +24,11 @@ def approve_user_edit_request(request, user_edit_request_id):
     
     return redirect('/')
 
+@login_required(login_url='login')
 def reject_user_edit_request(request, user_edit_request_id):
+    if not request.user.is_admin:
+        return redirect("/")
+    
     user_edit_request = get_object_or_404(UserEditRequest, id=user_edit_request_id)
 
     if request.method == 'POST':
