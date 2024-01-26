@@ -38,9 +38,12 @@ Para começar clone o repositório para sua máquina.
 git clone https://github.com/FernandoAyach/seletiva-ledes.git
 ```
 
-Entre no diretório do projeto e rode o comando `python -m venv ./venv` para começar o ambiente virtual e execute o comando `pip install -r requirements.txt` para instalar todas as dependências do projeto.
+Entre no diretório do projeto e rode o comando `python -m venv ./venv` para começar o ambiente virtual e o inicie usando o comando:
+- Windows: `venv/Scripts/activate`
+- Linux: `source venv/bin/activate`
+- MAC: `venv/bin/activate`
 
-Para executar o projeto, rode os comandos `python manage.py migrate` para que as migrações iniciais do banco de dados sejam realizadas e o comando `python manage.py runserver` para executar a aplicação. Por padrão, o site será exibido em `http://127.0.0.1:8000` ou `http://localhost:8000`.
+Para executar o projeto, rode os comandos `pip install -r requirements`, para instalar todas as dependências do programa, `python manage.py migrate` para que as migrações iniciais do banco de dados sejam realizadas e o comando `python manage.py runserver` para executar a aplicação. Por padrão, o site será exibido em `http://127.0.0.1:8000` ou `http://localhost:8000`.
 
 
 ### Autenticação e acessos
